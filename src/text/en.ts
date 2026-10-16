@@ -1,0 +1,88 @@
+export const en = {
+    crumbs: {
+        root: "DAQS",
+        dashboardPage: "Data Fetching",
+        settingsPage: "Settings",
+        dataTablePage: "Experiment Data",
+    },
+    deviceSwitcher: {
+        menuContentLabel: "Devices",
+        addButtonLabel: "Add Device",
+        contextMenu: {
+            select: "Select",
+            delete: "Delete",
+            edit: "Edit",
+            info: "Info",
+        },
+    },
+    sidebarTabs: {
+        experimentData: "Experiment Data",
+        dashboardPage: "Dashboard",
+    },
+    dashboardPage: {
+        charts: {
+            thermocouple_1: "Thermocouple 1",
+            thermocouple_2: "Thermocouple 2",
+            voltage: "Voltage",
+        },
+        dataKey: {
+            dataKeyT1: "t1History",
+            dataKeyT2: "t2History",
+            dataKeyV: "voltageHistory",
+        }
+    },
+    devicePage: {
+        title: "Device Settings",
+        description: "Manage hardware parameters and channels.",
+        indSectionTitle: "Identification and Addressing",
+        indSectionDescription: "Identifier representing the device and it's address",
+        chanelMappingTitle: "Chanel Mapping",
+        chanelMappingDescription: "Slot and channel number identifying where each sensor is physically connected.",
+        iconLabel: "Icon",
+        nameLabel: "Name",
+        resourceAddress: "Resource Address",
+        thermocouple_1: "Thermocouple 1",
+        thermocouple_2: "Thermocouple 2",
+        voltage: "Voltage",
+        slot: "Slot",
+        buttons: {
+            edit: "Edit",
+            save: "Save",
+            cancel: "Cancel",
+            add: "Add",
+            delete: "Delete",
+        }
+    },
+    dataTablePage: {
+        table: {
+            timeColumn: "Time",
+            userColumn: "User",
+            deviceColumn: "Device",
+            thermocouple_1Column: "T1",
+            thermocouple_2Column: "T2",
+            voltageColumn: "Voltage",
+        },
+        filtering: {
+            columnFiltering: "View",
+            dataFiltering: "Filters",
+            timeForm: "Time From",
+            timeTo: "Time To",
+            allDevices: "All devices",
+            apply: "Apply",
+            reset: "Reset",
+            devicePlaceholder: "DAQ6510",
+        },
+        footer: {
+            rowsPerPage: "Rows per page",
+            pageOf: "of",
+            rowSelected: "row(s) selected",
+        }
+    },
+    toast: {
+        deviceAdd: "Device added successfully",
+        deviceUpdate: "Device updated",
+        deviceDelete: "Device deleted",
+        deviceDeleteFailed: "Device can not be deleted.",
+        loadingError: "Failed to load data.",
+    },
+};
