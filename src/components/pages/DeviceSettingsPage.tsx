@@ -1,7 +1,7 @@
 import { observer } from "mobx-react-lite";
 import { FieldError, FieldLabel } from "@/components/ui/field.tsx";
 import { en } from "@/text/en.ts";
-import {Link, Computer, CheckCircle2, PlusCircle, Trash2, PencilLine, Undo2} from "lucide-react";
+import {Link, Computer, CheckCircle2, PlusCircle, Trash2, PencilLine, Undo2, Usb} from "lucide-react";
 import { Input } from "@/components/ui/input.tsx";
 import { LogoMap } from "@/models/device/logo-map.ts";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card.tsx";
@@ -46,14 +46,15 @@ const DeviceSettingsPage = observer((props: DeviceSettingsPageProps) => {
                     <fieldset disabled={disable} className="w-full space-y-6 group">
                         <div className="flex flex-col md:flex-row gap-6 w-full">
                             <div className="w-full md:w-5/12">
-                                <ChannelMapping
+                                <UsbDeviceMapping
                                     form={form}
                                     disabled={disable}
                                 />
                             </div>
                             <div className="w-full md:w-7/12">
-                                <DeviceMapping
+                                <DaqsMapping
                                     form={form}
+                                    disabled={disable}
                                 />
                             </div>
                         </div>
@@ -145,13 +146,13 @@ const ContextButtons = observer((
 });
 
 
-const DeviceMapping = observer((
+const DaqsMapping = observer((
     props: {
         form: UseFormReturn
-
+        disabled: boolean
     }
 ) => {
-    const { form } = props;
+    const { form, disabled } = props;
 
     return (
         <Card className="shadow-none bg-transparent">
@@ -160,8 +161,8 @@ const DeviceMapping = observer((
                     <Computer className="size-4" />
                 </div>
                 <div>
-                    <CardTitle className="text-sm font-semibold">{en.devicePage.indSectionTitle}</CardTitle>
-                    <CardDescription className="text text-sm">{en.devicePage.indSectionDescription}.</CardDescription>
+                    <CardTitle className="text-sm font-semibold">{en.devicePage.daqsSectionTitle}</CardTitle>
+                    <CardDescription className="text text-sm">{en.devicePage.daqsSectionDescription}.</CardDescription>
                 </div>
             </div>
             <CardContent className="space-y-8">
@@ -252,12 +253,20 @@ const DeviceMapping = observer((
                         </div>
                     )}
                 />
+
+                <SlotChannelRaw
+                    form={form}
+                    label={en.devicePage.voltage}
+                    slotName={deviceFormFields.voltage_slot}
+                    channelName={deviceFormFields.voltage_channel}
+                    disabled={disabled}
+                />
             </CardContent>
         </Card>
     );
 });
 
-const ChannelMapping = observer((
+const UsbDeviceMapping = observer((
     props: {
         form: UseFormReturn
         disabled: boolean
@@ -270,37 +279,40 @@ const ChannelMapping = observer((
             <CardHeader className="border-b">
                 <div className="flex items-center gap-2.5">
                     <div className="p-2 rounded-lg">
-                        <Link className="size-4" />
+                        <Usb className="size-4" />
                     </div>
                     <div>
-                        <CardTitle className="text-sm font-semibold">{en.devicePage.chanelMappingTitle}</CardTitle>
-                        <CardDescription className="text text-sm">{en.devicePage.chanelMappingDescription}.</CardDescription>
+                        <CardTitle className="text-sm font-semibold">{en.devicePage.usbDeviceMappingTitle}</CardTitle>
+                        <CardDescription className="text text-sm">{en.devicePage.usbDeviceMappingDescription}.</CardDescription>
                     </div>
                 </div>
             </CardHeader>
             <CardContent className="space-y-8">
-                <SlotChannelRaw
-                    form={form}
-                    label={en.devicePage.thermocouple_1}
-                    slotName={deviceFormFields.thermocouple_1_slot}
-                    channelName={deviceFormFields.thermocouple_1_channel}
-                    disabled={disabled}
-                />
-                <SlotChannelRaw
-                    form={form}
-                    label={en.devicePage.thermocouple_2}
-                    slotName={deviceFormFields.thermocouple_2_slot}
-                    channelName={deviceFormFields.thermocouple_2_channel}
-                    disabled={disabled}
-                />
-                <SlotChannelRaw
-                    form={form}
-                    label={en.devicePage.voltage}
-                    slotName={deviceFormFields.voltage_slot}
-                    channelName={deviceFormFields.voltage_channel}
-                    disabled={disabled}
-                />
+                <Controller
+                    name={deviceFormFields.port}
+                    control={form.control}
+                    render={({ field, fieldState }) => (
+                        <div className="flex gap-2 w-full">
+                            <FieldLabel className="text-xs font-medium text-nowrap">
+                                {en.devicePage.portLabel}
+                            </FieldLabel>
+                            <Separator orientation="vertical" />
+                            <div className="flex flex-col gap-1 flex-1">
+                                <Input
+                                    {...field}
+                                    placeholder="/dev/ttyUSB0"
+                                    aria-invalid={fieldState.invalid}
+                                />
+                                {fieldState.error && (
+                                    <span className="text-xs text-destructive">
+                                        {fieldState.error.message}
+                                     </span>
+                                )}
+                            </div>
 
+                        </div>
+                    )}
+                    />
             </CardContent>
         </Card>
     );
@@ -318,7 +330,7 @@ const SlotChannelRaw = observer((
     const {form, label, slotName, channelName, disabled} = props;
 
     return (
-        <div className="flex flex-col md:flex-row items-start md:items-center gap-6 justify-start">
+        <div className="flex flex-col md:flex-row items-start md:items-center justify-start">
             <label className="text-xs font-medium whitespace-nowrap w-1/5 shrink-0">
                 {label}
             </label>
@@ -329,8 +341,8 @@ const SlotChannelRaw = observer((
                 name={slotName}
                 control={form.control}
                 render={({ field, fieldState }) => (
-                    <div className="flex flex-col gap-1">
-                        <FieldLabel className="text-xs font-medium w-1/3">
+                    <div className="flex flex-col pr-3">
+                        <FieldLabel className="text-xs font-medium">
                             {en.devicePage.slot}
                         </FieldLabel>
                         <Select value={field.value} onValueChange={field.onChange} disabled={disabled}>

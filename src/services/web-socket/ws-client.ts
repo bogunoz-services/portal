@@ -1,4 +1,4 @@
-import { WSClient } from "@/services/base-ws-client.ts";
+import { WSClient } from "@/services/web-socket/base-ws-client.ts";
 
 const getWsUrl = () => {
     if (import.meta.env.VITE_WS_URL) {

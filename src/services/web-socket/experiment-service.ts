@@ -1,9 +1,9 @@
-import type { ExperimentHistory } from "@/models/experiment/experiment-history";
+import type { ExperimentHistory } from "@/models/experiment/experiment-history.ts";
 import type {ExperimentStatus} from "@/models/experiment/experiment-status.ts";
 import type {ExperimentChannelMap} from "@/models/experiment/experiment-channel-map.ts";
 import type {ExperimentConnectionConfig} from "@/models/experiment/experiment-connection-config.ts";
-import type { WSClient } from "./base-ws-client";
-import {wsClient} from "@/services/ws-client.ts";
+import type { WSClient } from "./base-ws-client.ts";
+import {wsClient} from "@/services/web-socket/ws-client.ts";
 
 export interface ExperimentServiceInterface {
     start: () => Promise<void>;

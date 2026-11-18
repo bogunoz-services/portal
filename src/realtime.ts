@@ -1,4 +1,4 @@
-import {wsClient} from "@/services/ws-client.ts";
+import {wsClient} from "@/services/web-socket/ws-client.ts";
 import {dataStore} from "@/stores/data-store.ts";
 
 export const startRealtime = (): (() => void) => {

@@ -1,5 +1,5 @@
-import {experimentService} from "@/services/experiment-service.ts";
-import {databaseService} from "@/services/database-service.ts";
+import {experimentService} from "@/services/web-socket/experiment-service.ts";
+import {databaseService} from "@/services/api/database-service.ts";
 import type {Device} from "@/models/device/device.ts";
 import type {MeasurementFilter} from "@/models/measurement/measurement-filter.ts";
 import type {MeasurementsPage} from "@/models/measurement/measurements-page.ts";

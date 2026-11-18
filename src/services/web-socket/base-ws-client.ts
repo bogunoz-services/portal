@@ -1,5 +1,5 @@
 import type {WSRequest} from "@/models/ws/ws-request.ts";
-import type { WSResponse } from "@/models/ws/ws-response";
+import type { WSResponse } from "@/models/ws/ws-response.ts";
 import type {WSEvent} from "@/models/ws/ws-event.ts";
 
 interface PendingRequest {

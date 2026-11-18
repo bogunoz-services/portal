@@ -33,10 +33,6 @@ const DeviceSettingsPageContainer = observer((props: DeviceSettingsPageContainer
             name: "",
             logo: "cpu",
             resourceAddress: "",
-            thermocouple_1_slot: "",
-            thermocouple_1_channel: "",
-            thermocouple_2_slot: "",
-            thermocouple_2_channel: "",
             voltage_slot: "",
             voltage_channel: "",
         },
@@ -52,12 +48,9 @@ const DeviceSettingsPageContainer = observer((props: DeviceSettingsPageContainer
                     name: existingDevice.name,
                     logo: existingDevice.logo,
                     resourceAddress: existingDevice.resource_address,
-                    thermocouple_1_slot: existingDevice.thermocouple_1_slot || "",
-                    thermocouple_1_channel: existingDevice.thermocouple_1_channel || "",
-                    thermocouple_2_slot: existingDevice.thermocouple_2_slot || "",
-                    thermocouple_2_channel: existingDevice.thermocouple_2_channel || "",
                     voltage_slot: existingDevice.voltage_slot || "",
                     voltage_channel: existingDevice.voltage_channel || "",
+                    port: existingDevice.port || "",
                 });
                 return;
             }
@@ -67,12 +60,9 @@ const DeviceSettingsPageContainer = observer((props: DeviceSettingsPageContainer
                     name: "",
                     logo: "cpu",
                     resourceAddress: "",
-                    thermocouple_1_slot: "",
-                    thermocouple_1_channel: "",
-                    thermocouple_2_slot: "",
-                    thermocouple_2_channel: "",
                     voltage_slot: "",
                     voltage_channel: "",
+
                 });
             }
         }
@@ -87,12 +77,9 @@ const DeviceSettingsPageContainer = observer((props: DeviceSettingsPageContainer
             name: data.name,
             logo: data.logo as Device["logo"],
             resource_address: data.resourceAddress,
-            thermocouple_1_slot: data.thermocouple_1_slot,
-            thermocouple_1_channel: data.thermocouple_1_channel,
-            thermocouple_2_slot: data.thermocouple_2_slot,
-            thermocouple_2_channel: data.thermocouple_2_channel,
             voltage_slot: data.voltage_slot,
             voltage_channel: data.voltage_channel,
+            port: data.port
         };
 
         await dataStore.addDevice(device)
@@ -108,12 +95,9 @@ const DeviceSettingsPageContainer = observer((props: DeviceSettingsPageContainer
             name: data.name,
             logo: data.logo as Device["logo"],
             resource_address: data.resourceAddress,
-            thermocouple_1_slot: data.thermocouple_1_slot,
-            thermocouple_1_channel: data.thermocouple_1_channel,
-            thermocouple_2_slot: data.thermocouple_2_slot,
-            thermocouple_2_channel: data.thermocouple_2_channel,
             voltage_slot: data.voltage_slot,
             voltage_channel: data.voltage_channel,
+            port: data.port
         };
 
         await dataStore.updateDevice(device)

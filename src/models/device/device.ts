@@ -7,12 +7,9 @@ export interface Device {
     name: string;
     logo: string;
     resource_address: string;
-    thermocouple_1_slot: string;
-    thermocouple_1_channel: string;
-    thermocouple_2_slot: string;
-    thermocouple_2_channel: string;
     voltage_slot: string;
     voltage_channel: string;
+    port: string;
 }
 
 export type StoredDevice = Device;
