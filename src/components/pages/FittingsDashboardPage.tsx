@@ -74,7 +74,7 @@ const FittingsTable = observer((props: FittingsTableProps) => {
             <div className="pt-6"/>
             <div className="w-full overflow-x-auto rounded-lg border">
                 <Table className="w-full min-w-[1000px]">
-                    <TableHeader className="sticky top-0 z-20 bg-muted">
+                    <TableHeader className="top-0 z-20 bg-muted">
                         {table.getHeaderGroups().map((headerGroup) => (
                             <TableRow key={headerGroup.id}>
                                 {headerGroup.headers.map((header) => {

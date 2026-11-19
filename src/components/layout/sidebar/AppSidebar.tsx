@@ -2,7 +2,7 @@
 
 import {
     Sidebar,
-    SidebarContent,
+    SidebarContent, SidebarFooter,
     SidebarGroup,
     SidebarGroupContent,
     SidebarGroupLabel,
@@ -15,6 +15,8 @@ import DeviceSwitcher from "@/components/layout/sidebar/DeviceSwitcher.tsx"
 import type {ComponentProps} from "react";
 import {ChartLine, Settings, SquareActivity, Table} from "lucide-react";
 import {en} from "@/text/en.ts";
+import UserPanel from "@/components/layout/sidebar/UserPanel.tsx";
+import type {User} from "@/models/user/user.ts";
 
 interface AppSidebarProps extends ComponentProps<typeof Sidebar> {
     setSelectedDevice: (device: Device) => void
@@ -29,9 +31,6 @@ interface AppSidebarProps extends ComponentProps<typeof Sidebar> {
 }
 
 
-function IconInnerShadowTop(props: { className: string }) {
-    return null;
-}
 
 const AppSidebar = observer((props: AppSidebarProps) => {
     const { getDevices, deleteDevice, handleNavigateToDevice, getDeviceConnectionStatus,
@@ -77,6 +76,18 @@ const AppSidebar = observer((props: AppSidebarProps) => {
                     </SidebarGroupContent>
                 </SidebarGroup>
             </SidebarContent>
+            <SidebarFooter>
+                <UserPanel
+                    user={
+                        {
+                            name: "shadcn",
+                            email: "m@example.com",
+                            avatar: "/avatars/shadcn.jpg",
+                        } as User
+                    }
+                   userLogIn={false}
+                />
+            </SidebarFooter>
         </Sidebar>
     )
 })

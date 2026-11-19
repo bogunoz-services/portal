@@ -27,6 +27,12 @@ export const en = {
         fittingsSettings: "Experiment Settings",
         fittings: "Fittings",
     },
+    sidebarUserPanel: {
+        account: "Account",
+        notifications: "Notifications",
+        logOut: "Log Out",
+        logIn: "Log In",
+    },
     dashboardPage: {
         charts: {
             thermocouple_1: "Thermocouple 1",
@@ -149,5 +155,15 @@ export const en = {
             r2Phase: "Phase Fit Goodness (R²)",
             resNorm: "Residual Norm",
         }
+    },
+    loginDialog: {
+        continue: {
+            google: "Continue with Google",
+            apple: "Continue with Apple",
+            facebook: "Continue with Facebook",
+        },
+        welcome: "Welcome back",
+        signIn: "Or sign in to continue",
+        logIn: "Loging in ..."
     }
 };

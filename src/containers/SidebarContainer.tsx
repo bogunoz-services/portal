@@ -40,6 +40,7 @@ const SidebarContainer = observer((props: SidebarContainerProps) => {
         }
     }, [dataStore]);
 
+
     const handleNavigateToDevice = useCallback((variant: "inspect" | "edit" | "add", deviceName?: string, deviceId?: string) => {
         if (variant === "add") {
             navigate(`/${roots.device}/${variant}`);
@@ -55,7 +56,6 @@ const SidebarContainer = observer((props: SidebarContainerProps) => {
     const handleNavigateToFittingsSettings = useCallback(() => navigate(`/${roots.fittingsSettings}`),[navigate]);
 
     const handleNavigateToFittingsDashboard = useCallback(() => navigate(`/${roots.fittingsDashboard}`),[navigate]);
-
 
     const handleOnStart = useCallback(async () => await dataStore.startExperiment(), [dataStore]);
 

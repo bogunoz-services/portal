@@ -7,6 +7,7 @@ import DashboardPageContainer from "@/containers/pages/DashboardPageContainer.ts
 import {dataStore} from "@/stores/data-store.ts";
 import FittingsSettingsPageContainer from "@/containers/pages/FittingsSettingsPageContainer.tsx";
 import FittingsDashboardPageContainer from "@/containers/pages/FittingsDashboardPageContainer.tsx";
+import LoginDialog from "@/components/layout/sidebar/LoginDialog.tsx";
 
 export const roots = {
     dashboard: "dashboard",
